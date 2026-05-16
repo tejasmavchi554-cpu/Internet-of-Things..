@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tejas Mavchi | Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* --- CSS Variables for Easy Theming --- */
+    :root {
+      --bg: #fbfbfb;
+      --surface: #ffffff;
+      --text: #121212;
+      --muted: #555b6e;
+      --accent: #2f66ff;
+      --border: #e3e8f1;
+      --shadow: 0 24px 60px rgba(19, 25, 45, 0.08);
+      --radius: 24px;
+    }
+
+    /* --- Base Styles --- */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* --- Navigation --- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251, 251, 251, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.04em;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .button-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      width: fit-content;
+      box-shadow: 0 10px 20px rgba(47, 102, 255, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .button-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(47, 102, 255, 0.25);
+    }
+
+    /* --- Photo Frame Styling --- */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .photo-frame {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 3/4;
+      background: #fff;
+      padding: 12px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transform: rotate(2deg); /* Adds a subtle creative tilt */
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .photo-frame:hover {
+      transform: rotate(0deg) translateY(-10px);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: calc(var(--radius) - 8px);
+    }
+
+    /* --- Generic Section Layout --- */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    /* --- Grids & Cards --- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(19, 25, 45, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(47, 102, 255, 0.3);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3, .card h4 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.2s;
+    }
+
+    .project-link:hover {
+      transform: translateX(4px);
+    }
+
+    /* --- Contact --- */
+    .contact-card {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-details {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0 0 0;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .contact-item span {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-item p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    /* --- Responsive Design --- */
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 4rem 1.5rem;
+        gap: 3rem;
+      }
+      .hero-visual {
+        order: -1; /* Puts photo on top on mobile */
+      }
+      .hero-subtitle {
+        margin: 0 auto;
+      }
+      .button-primary {
+        margin: 0 auto;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        display: none; /* Consider adding a hamburger menu later for mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a class="brand" href="#home">Tejas Mavchi</a>
+      <nav>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Engineering Student</span>
+        <h1 class="hero-title">Building logic through design.</h1>
+        <p class="hero-subtitle">
+          Engineering student at MITAOE with a passion for practical solutions, software development, and building refined digital tools.
+        </p>
+        <a href="#projects" class="button-primary">View My Projects</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="photo-frame">
+          <!-- THIS IS YOUR IMAGE PLACEHOLDER -->
+          <img src="IMG_20260217_015729.jpg" alt="Tejas Mavchi" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Education and enthusiasm.</p>
+      </div>
+
+      <div class="about-grid">
+        <p style="color: var(--muted); line-height: 1.8; font-size: 1.05rem;">
+          I am an engineering student at MITAOE Academy of Engineering. 
+          My focus is on creating dependable solutions with clear design 
+          and thoughtful logic. I approach every project with curiosity, 
+          whether it's writing code, designing web layouts, or exploring 
+          nature-inspired engineering.
+        </p>
+
+        <div class="card">
+          <h3>Current Profile</h3>
+          <p style="margin-top: 0.5rem;">
+            First-Year Engineering Student<br/>
+            MITAOE Academy of Engineering
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Core technologies and programming abilities.</p>
+      </div>
+
+      <div class="grid-container">
+        <div class="card">
+          <h4>C++ & Python</h4>
+          <p>Developing algorithms, performance applications, and automation scripts.</p>
+        </div>
+        <div class="card">
+          <h4>Web Development</h4>
+          <p>Structuring web experiences and visual designs using HTML5 and CSS3.</p>
+        </div>
+        <div class="card">
+          <h4>Linux OS</h4>
+          <p>Comfortable with command-line operations, navigation, and environments.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">A selection of my recent work.</p>
+      </div>
+
+      <div class="grid-container">
+        <div class="card">
+          <h3>To-Do List App</h3>
+          <p>A Linux-based application for efficient task management and organization.</p>
+          <a class="project-link" href="https://drive.google.com/file/d/1i9pCpEHrh_GZabx8Iu-wYo2AP4bd7Jc8/view" target="_blank">
+            View Project &rarr;
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>Watering System</h3>
+          <p>An automatic soil moisture prototype designed for practical agricultural utility.</p>
+          <a class="project-link" href="https://drive.google.com/file/d/1tn4kiPgJXVSZxcnMdeI_9laetjB2THZG/view" target="_blank">
+            View Prototype &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="section-header" style="text-align: center;">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">Let's connect and discuss opportunities.</p>
+      </div>
+
+      <div class="card contact-card">
+        <ul class="contact-details">
+          <li class="contact-item">
+            <span>Email</span>
+            <p><a href="mailto:tejasmavchi554@gmail.com">tejasmavchi554@gmail.com</a></p>
+          </li>
+          <li class="contact-item">
+            <span>Phone</span>
+            <p><a href="tel:+917558393480">+91 7558393480</a></p>
+          </li>
+          <li class="contact-item">
+            <span>LinkedIn</span>
+            <!-- Remember to replace the placeholder link below with your actual LinkedIn URL -->
+            <p><a href="https://linkedin.com/in/placeholder" target="_blank" style="color: var(--accent);">https://tejasmavchi554-cpu.github.io/Internet-of-Things/</a></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Tejas Mavchi. Designed and built with passion.
+  </footer>
+
+  <script>
+    // Automatically update the footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
